@@ -9,10 +9,11 @@
   },
   "favicon": "/images/favicon.png",
   "navigation": {
-    "tabs": [
+    "groups": [
       {
-        "tab": "Guides",
-        "groups": [
+        "group": "Guides",
+        "pages": [
+          "guides/test",
           {
             "group": "Getting started",
             "pages": [
@@ -44,25 +45,27 @@
               "ai-tools/claude-code",
               "ai-tools/windsurf"
             ]
-          }
-        ]
-      },
-      {
-        "tab": "API reference",
-        "groups": [
-          {
-            "group": "API documentation",
-            "pages": [
-              "api-reference/introduction"
-            ]
           },
           {
-            "group": "Endpoint examples",
+            "group": "API reference",
             "pages": [
-              "api-reference/endpoint/get",
-              "api-reference/endpoint/create",
-              "api-reference/endpoint/delete",
-              "api-reference/endpoint/webhook"
+              {
+                "group": "API documentation",
+                "pages": [
+                  "api-reference/introduction"
+                ]
+              },
+              {
+                "group": "Endpoint examples",
+                "pages": [
+                  "api-reference/endpoint/get",
+                  "api-reference/endpoint/post",
+                  "api-reference/endpoint/create",
+                  "api-reference/endpoint/create-copied-1",
+                  "api-reference/endpoint/delete",
+                  "api-reference/endpoint/webhook"
+                ]
+              }
             ]
           }
         ]
@@ -102,5 +105,8 @@
     "color": {
       "dark": "#000000"
     }
+  },
+  "api": {
+    "openapi": "/openapi-public.yaml"
   }
 }

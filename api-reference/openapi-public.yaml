@@ -1,0 +1,362 @@
+openapi: 3.0.3
+info:
+  title: HSPing Search API
+  description: |
+    HS Code and keyword search API endpoints.
+    
+    **Authentication:** API Key required
+    **Rate Limiting:** Per API key
+    **Credits:** Free daily quota + paid credits
+  version: 1.0.0
+  contact:
+    name: HSPing API Support
+servers:
+  - url: https://api.hsping.com/api/v1
+    description: Public API - Requires API Key Auth
+
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: "API-KEY (sk_live_*)"
+      description: |
+        **Public API Authentication**
+        
+        Obtain API keys from the dashboard:
+        1. Login → Dashboard → API Keys → Create Key
+        2. Use: `Authorization: Bearer <API_KEY>`
+        
+        **Security:**
+        - Keys are hashed in database
+        - Shown only once at creation
+        - Can be revoked anytime
+        - Rate limited per key
+        - Credits deducted per request
+
+  schemas:
+    # ==================== ERROR RESPONSES ====================
+    ErrorResponse:
+      type: object
+      properties:
+        code:
+          type: string
+          example: "UNAUTHENTICATED | INVALID_PARAMETER | NOT_FOUND | INSUFFICIENT_CREDITS"
+        message:
+          type: string
+          example: "Invalid or inactive API key."
+        details:
+          type: object
+          description: Validation errors or additional context
+          nullable: true
+          additionalProperties: true
+
+    # ==================== SEARCH RESULTS ====================
+    HsSearchResult:
+      type: object
+      required: [hscode, country, direction, last_updated]
+      properties:
+        hscode:
+          type: string
+          example: "1806901000"
+        wco:
+          type: string
+          nullable: true
+          description: World Customs Organization code
+          example: "180690"
+        description_en:
+          type: string
+          nullable: true
+          example: "Chocolate, in blocks, slabs or bars"
+        country:
+          type: string
+          enum: ["US", "UK", "SG", "CA", "AU"]
+          description: ISO alpha-2 country code
+          example: "US"
+        source:
+          type: string
+          nullable: true
+          description: Data source identifier
+        version:
+          type: string
+          nullable: true
+          description: HS classification version (e.g., "2022")
+        direction:
+          type: string
+          description: Direction of trade (e.g., "import" or "export")
+        last_updated:
+          type: string
+          description: Last updated date in MM-YYYY format
+          example: "11-2025"
+
+    FindGetResponse:
+      type: object
+      properties:
+        query:
+          type: string
+          example: "chocolate"
+        query_type:
+          type: integer
+          description: "1 = HS code search, 2 = keyword search"
+          enum: [1, 2]
+        country:
+          type: string
+          enum: ["US", "UK", "SG", "CA", "AU"]
+          description: ISO alpha-2 country code
+          example: "US"
+        count:
+          type: integer
+          description: Number of results returned
+          example: 10
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/HsSearchResult'
+
+    BatchFindItem:
+      type: object
+      required: [query]
+      properties:
+        query:
+          type: string
+          minLength: 4
+          description: HS code or keyword
+          example: "chocolate"
+        query_type:
+          type: integer
+          enum: [1, 2]
+          default: 2
+          description: "1 = HS code, 2 = keyword"
+        country:
+          type: string
+          enum: ["US", "UK", "SG", "CA", "AU"]
+          description: ISO alpha-2 country code
+          example: "US"
+        count:
+          type: integer
+          minimum: 1
+          maximum: 100
+          default: 10
+        version:
+          type: string
+          description: HS classification version
+          example: "2022"
+
+    BatchFindRequest:
+      type: object
+      required: [items]
+      properties:
+        items:
+          type: array
+          minItems: 1
+          maxItems: 100
+          items:
+            $ref: '#/components/schemas/BatchFindItem'
+        version:
+          type: string
+          description: Global version override for all items
+          example: "2022"
+        fields:
+          type: string
+          description: Comma-separated list of fields to return (e.g., "hscode,description_en")
+          example: "hscode,description_en,country"
+
+    BatchFindResponseItem:
+      type: object
+      properties:
+        query:
+          type: string
+        query_type:
+          type: integer
+        count:
+          type: integer
+        country:
+          type: string
+          enum: ["US", "UK", "SG", "CA", "AU"]
+          nullable: true
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/HsSearchResult'
+
+    BatchFindResponse:
+      type: object
+      properties:
+        count:
+          type: integer
+          description: Number of items processed
+        response:
+          type: array
+          items:
+            $ref: '#/components/schemas/BatchFindResponseItem'
+
+paths:
+  /find:
+    get:
+      summary: Single HS code or keyword search
+      description: |
+        **Authentication:** Required (API Key)
+        
+        **Credits:**
+        - Free quota: 2,500/day
+        - Paid: Deducted after free quota
+        - Cost: Typically 1 credit per request
+        
+        **Query Types:**
+        - `1`: HS code search (e.g., "180690")
+        - `2`: Keyword search (e.g., "chocolate")
+
+
+        **Country:**
+        - Available country codes `US`, `UK`, `SG`, `CA`, `AU`
+  
+        **Rate Limiting:**
+        - Per API key
+        - Configured via RateLimitMiddleware
+        
+        **Response Headers:**
+        - `X-Free-Credits-Remaining`: Remaining daily free quota
+        - `X-Paid-Credits-Remaining`: Remaining paid credits
+      security:
+        - ApiKeyAuth: []
+      parameters:
+        - in: query
+          name: query
+          required: true
+          schema:
+            type: string
+            minLength: 4
+          description: HS code or keyword to search
+          example: "chocolate"
+        - in: query
+          name: query_type
+          schema:
+            type: integer
+            enum: [1, 2]
+            default: 2
+          description: Search type
+        - in: query
+          name: country
+          schema:
+            type: string
+            enum: ["US", "UK", "SG", "CA", "AU"]
+          description: ISO alpha-2 country code
+          example: "UK"
+        - in: query
+          name: count
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 100
+            default: 10
+          description: Maximum results to return
+        - in: query
+          name: version
+          schema:
+            type: string
+          description: HS classification version (e.g., "2022")
+        - in: query
+          name: fields
+          schema:
+            type: string
+          description: Comma-separated fields to include in response
+          example: "hscode,description_en,country"
+      responses:
+        '200':
+          description: Successful search
+          headers:
+            X-Free-Credits-Remaining:
+              schema:
+                type: integer
+              description: Remaining free quota for today
+            X-Paid-Credits-Remaining:
+              schema:
+                type: integer
+              description: Remaining paid credits
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FindGetResponse'
+        '400':
+          description: Invalid parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Missing or invalid API key
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '402':
+          description: Insufficient credits
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+    post:
+      summary: Batch HS code and keyword searches
+      description: |
+        **Authentication:** Required (API Key)
+        
+        **Limits:**
+        - Maximum 100 items per request
+        - Total cost = sum of all item costs
+        
+        **Batch Processing:**
+        - Each item is processed independently
+        - Returns array of results
+        - Items can specify individual parameters or use global defaults
+        
+        **Credits:**
+        - Deducted per item after free quota
+        - Only successful items are charged
+        - If one item fails, others still process (partial success)
+      security:
+        - ApiKeyAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BatchFindRequest'
+            example:
+              items:
+                - query: "chocolate"
+                  query_type: 2
+                  country: "AU"
+                  count: 5
+                - query: "180690"
+                  query_type: 1
+                  country: "US"
+                  count: 10
+              version: "2022"
+              fields: "hscode,description_en,country"
+      responses:
+        '200':
+          description: Batch results (partial success possible)
+          headers:
+            X-Free-Credits-Remaining:
+              schema:
+                type: integer
+            X-Paid-Credits-Remaining:
+              schema:
+                type: integer
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BatchFindResponse'
+        '400':
+          description: Invalid batch payload
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
