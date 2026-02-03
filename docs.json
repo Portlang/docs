@@ -11,6 +11,11 @@
   "navigation": {
     "groups": [
       {
+        "pages": [
+              "introduction",
+              "supported-countries",
+              "authentication"
+            ],
         "group": "Guides",
         "pages": [
           {
