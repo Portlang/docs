@@ -11,68 +11,60 @@
   "navigation": {
     "groups": [
       {
-
-        "group": "Guides",
+        "group": "Getting started",
+        "pages": [
+          "index",
+          "quickstart",
+          "development"
+        ]
+      },
+      {
+        "group": "Customization",
+        "pages": [
+          "essentials/settings",
+          "essentials/navigation"
+        ]
+      },
+      {
+        "group": "Writing content",
+        "pages": [
+          "essentials/markdown",
+          "essentials/code",
+          "essentials/images",
+          "essentials/reusable-snippets"
+        ]
+      },
+      {
+        "group": "AI tools",
+        "pages": [
+          "ai-tools/cursor",
+          "ai-tools/claude-code",
+          "ai-tools/windsurf"
+        ]
+      },
+      {
+        "group": "API reference",
         "pages": [
           {
-            "group": "Getting started",
+            "group": "API documentation",
             "pages": [
-              "index",
-              "quickstart",
-              "development"
+              "api-reference/introduction"
             ]
           },
           {
-            "group": "Customization",
+            "group": "Endpoint examples",
             "pages": [
-              "essentials/settings",
-              "essentials/navigation"
-            ]
-          },
-          {
-            "group": "Writing content",
-            "pages": [
-              "essentials/markdown",
-              "essentials/code",
-              "essentials/images",
-              "essentials/reusable-snippets"
-            ]
-          },
-          {
-            "group": "AI tools",
-            "pages": [
-              "ai-tools/cursor",
-              "ai-tools/claude-code",
-              "ai-tools/windsurf"
-            ]
-          },
-          {
-            "group": "API reference",
-            "pages": [
-              {
-                "group": "API documentation",
-                "pages": [
-                  "api-reference/introduction"
-                ]
-              },
-              {
-                "group": "Endpoint examples",
-                "pages": [
-                  "api-reference/endpoint/get",
-                  "api-reference/endpoint/post",
-                  "api-reference/endpoint/create",
-                  "api-reference/endpoint/create-copied-1",
-                  "api-reference/endpoint/delete",
-                  "api-reference/endpoint/webhook"
-                ]
-              }
+              "api-reference/endpoint/get",
+              "api-reference/endpoint/post",
+              "api-reference/endpoint/create",
+              "api-reference/endpoint/create-copied-1",
+              "api-reference/endpoint/delete",
+              "api-reference/endpoint/webhook"
             ]
           }
         ]
-        
       }
     ]
-    
   },
   "logo": {
     "light": "/images/hsping-logo.png",
