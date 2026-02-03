@@ -6,7 +6,15 @@ HS Ping supports HS code references from the WCO (World Customs Organization), a
 
 ## The <kbd>country</kbd> parameter
 
-To search for country-specific HS code, use the <kbd>country</kbd> parameter in your query, with country value following the 2-letter ISO format. 
+To search for country-specific HS code, use the <kbd>country</kbd> parameter in your query, with country value following the 2-letter ISO format.
+
+<RequestExample>
+
+``` filename
+https://api.hsping.com/api/v1/find?query=wooden chair&country=uk
+```
+
+</RequestExample>
 
 | Supported Country | 2-letter ISO Format | Full Country Parameter |
 | ----------------- | ------------------- | ---------------------- |
@@ -24,7 +32,7 @@ For clarity, all JSON responses returned would also be labelled with the corresp
 
 <ResponseExample>
 
-``` filename
+```filename
 {
   "query": "chocolate",
   ...
