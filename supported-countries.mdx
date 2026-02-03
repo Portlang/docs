@@ -2,18 +2,18 @@
 title: "Supported Countries"
 ---
 
-You can search for country-specific HS code via the <kbd>country</kbd> parameter, using the 2 letters ISO country code format.
+HS Ping supports HS code references from the WCO (World Customs Organization) as well as the 5 countries below.
 
-| Supported Country | 2 letters ISO country code | Full Country Parameter |
-| ----------------- | -------------------------- | ---------------------- |
-| United States     | US                         | &country=us            |
-| United Kingdom    | UK                         | &country=uk            |
-| Singapore         | SG                         | &country=sg            |
-| Canada            | CA                         | &country=ca            |
-| Australia         | AU                         | &country=au            |
+To search for country-specific HS code, use the <kbd>country</kbd> parameter with country value following the 2-letter ISO format. If no country parameter is specified in a request, the returning HS Code references would be based on the WCO standard.
+
+| Supported Country | 2-letter ISO Format | Full Country Parameter |
+| ----------------- | ------------------- | ---------------------- |
+| United States     | US                  | &country=us            |
+| United Kingdom    | UK                  | &country=uk            |
+| Singapore         | SG                  | &country=sg            |
+| Canada            | CA                  | &country=ca            |
+| Australia         | AU                  | &country=au            |
 
 <Info>
-  Only import HS Code is supported for all country-specific responses.
+  Only **import** HS Code is supported for all country-specific responses.
 </Info>
-
-If no country parameter is specified in a request, HS Ping returns HS Code references based on the WCO (World Customs Organization) HS code standard.
