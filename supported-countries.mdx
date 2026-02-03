@@ -2,9 +2,11 @@
 title: "Supported Countries"
 ---
 
-HS Ping supports HS code references from the WCO (World Customs Organization) as well as the 5 countries below.
+HS Ping supports HS code references from the WCO (World Customs Organization), as well as these 5 countries: United States, United Kingdom, Canada, Singapore and Australia.
 
-To search for country-specific HS code, use the <kbd>country</kbd> parameter with country value following the 2-letter ISO format. If no country parameter is specified in a request, the returning HS Code references would be based on the WCO 6-digits standard.
+## The <kbd>country</kbd> parameter
+
+To search for country-specific HS code, use the <kbd>country</kbd> parameter in your query, with country value following the 2-letter ISO format. 
 
 | Supported Country | 2-letter ISO Format | Full Country Parameter |
 | ----------------- | ------------------- | ---------------------- |
@@ -17,3 +19,27 @@ To search for country-specific HS code, use the <kbd>country</kbd> parameter wit
 <Info>
   Only **import** HS Code is supported for all country-specific responses.
 </Info>
+
+For clarity, all JSON responses returned would also be labelled with the corresponding country code.
+
+<ResponseExample>
+
+``` filename
+{
+  "query": "chocolate",
+  ...
+  "results": [
+    {
+      ...
+      "country": "US",
+      ...
+    }
+  ]
+}
+```
+
+</ResponseExample>
+
+## WCO 6-digits standards
+
+If no country parameter is specified in a request, the returning HS Code references would be based on the WCO 6-digits standard.
