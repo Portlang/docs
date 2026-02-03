@@ -13,8 +13,11 @@
       {
         "group": "Getting started",
         "pages": [
+          "introduction",
+          "supported-countries",
+          "authentication",
           "index",
-          "quickstart",
+          "quickstart-copied-1",
           "development"
         ]
       },
