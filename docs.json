@@ -70,8 +70,8 @@
     ]
   },
   "logo": {
-    "light": "/images/hsping-logo.png",
-    "dark": "/images/hsping-logo-dark-ori(1).png"
+    "light": "/logo/hsping-logo.png",
+    "dark": "/logo/hsping-logo-dark-ori(1).png"
   },
   "navbar": {
     "links": [
