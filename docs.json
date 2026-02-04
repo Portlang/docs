@@ -9,15 +9,10 @@
   },
   "favicon": "/images/favicon.png",
   "navigation": {
-    "groups": [
-      {
-        "group": "Getting started",
-        "pages": [
-          "introduction",
-          "supported-countries",
-          "authentication"
-        ]
-      },
+    "pages": [
+      "getting-started/introduction",
+      "getting-started/supported-countries",
+      "getting-started/authentication",
       {
         "group": "Customization",
         "pages": [

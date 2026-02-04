@@ -2,11 +2,11 @@
 title: "Supported Countries"
 ---
 
-HS Ping supports the WCO (World Customs Organization) 6 digits standard HS Code, as well as variations from these 5 countries: United States, United Kingdom, Canada, Singapore and Australia.
+HS Ping supports the WCO (World Customs Organization) 6 digits standard HS Code, as well as HS variations from these 5 countries: United States, United Kingdom, Canada, Singapore and Australia.
 
 ## The <kbd>country</kbd> parameter
 
-To search for country-specific HS code, use the <kbd>country</kbd> parameter in your query with country value following the 2-letter ISO format.
+To search for country-specific HS code, use the <kbd>country</kbd> parameter in your query with country value following the ISO alpha-2 format.
 
 <RequestExample>
 
@@ -28,7 +28,7 @@ https://api.hsping.com/api/v1/find?query=wooden chair&country=uk
   Only **import** HS Code is supported for all country-specific responses.
 </Note>
 
-For clarity, all JSON responses returned would also be labelled with the corresponding country code.
+For clarity, all JSON responses returned would also be labelled with the corresponding country code in ISO alpha-2 format.
 
 <ResponseExample>
 
