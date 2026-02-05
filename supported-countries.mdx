@@ -2,52 +2,25 @@
 title: "Supported Countries"
 ---
 
-HS Ping supports the WCO (World Customs Organization) 6 digits standard HS Code, as well as HS variations from these 5 countries: United States, United Kingdom, Canada, Singapore and Australia.
+HS Ping currently supports HS code lookups for the following countries, as well as the international format by WCO:
 
-## The <kbd>country</kbd> parameter
-
-To search for country-specific HS code, use the <kbd>country</kbd> parameter in your query with country value following the ISO alpha-2 format.
-
-<RequestExample>
-
-```filename
-https://api.hsping.com/api/v1/find?query=wooden chair&country=uk
-```
-
-</RequestExample>
-
-| Supported Country | 2-letter ISO Format | Full Country Parameter |
-| ----------------- | ------------------- | ---------------------- |
-| United States     | US                  | &country=us            |
-| United Kingdom    | UK                  | &country=uk            |
-| Singapore         | SG                  | &country=sg            |
-| Canada            | CA                  | &country=ca            |
-| Australia         | AU                  | &country=au            |
+| 2-letter ISO Format | Supported Country |
+| :------------------ | ----------------- |
+| US                  | United States     |
+| UK                  | United Kingdom    |
+| SG                  | Singapore         |
+| CA                  | Canada            |
+| AU                  | Australia         |
 
 <Note>
   Only **import** HS Code is supported for all country-specific responses.
 </Note>
 
-For clarity, all JSON responses returned would also be labelled with the corresponding country code in ISO alpha-2 format.
 
-<ResponseExample>
+## World Customs Organization (WCO)
 
-```filename
-{
-  "query": "chocolate",
-  ...
-  "results": [
-    {
-      ...
-      "country": "US",
-      ...
-    }
-  ]
-}
-```
+If no country is specified in your request, the API defaults to the **WCO Harmonized System** - the international standard 6-digit HS code nomenclature maintained by the World Customs Organization.
 
-</ResponseExample>
-
-## WCO 6-digits standards
-
-If no country parameter is specified in a request, the returning HS Code references would be based on the WCO 6-digits standard.
+<Card title="Using the country paramater" icon="flag-checkered" href="/parameters/country.mdx">
+  Learn more about country-specific search at the <kbd>country</kbd> parameter guide here.
+</Card>

@@ -22,14 +22,21 @@ You can read more about our [data sources here](https://hsping.com/data-source).
 
 ## How it works
 
-To search for HS Code references, you just need to send an API request together with the search term (query). HS Ping would return a JSON-formatted HTTP response that contain HS code references with matching query.
+To search for HS Code references, send an API request with your search term (query). HS Ping returns a JSON-formatted response containing HS code references matching your query.
 
-Additional parameters are available to refine your search results.
+You can use additional parameters to get more refined search results.
 
 ## Base API URL
 
-The base API url is <kbd>https://api.hsping.com/api/v1</kbd> .
+All API requests should be made to:
+
+ <kbd>https://api.hsping.com/api/v1</kbd> .
+
+Current version: v1
 
 ## Search Options
 
-HS Ping's API supports single and bulk HS code search.
+HS Ping's API supports two types of searches:
+
+- **Single HS Code Lookup** - Search for one HS code at a time
+- **Batch Lookup** - Search for multiple HS codes in one request

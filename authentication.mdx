@@ -4,10 +4,39 @@ title: "Authentication"
 
 All requests to HS Ping requires an active API Key.
 
-To initiate a request, an active API Key must be included within the HTTP request header:
-
-<kbd>Authorization: Bearer API_KEY</kbd>
-
 ## Creating an API Key
 
 You can create an API key through the HS Ping Dashboard → API Keys.
+
+## Using Your API Key
+
+To initiate a request, an active API Key must be included in the HTTP request header:
+
+```
+Authorization: Bearer API_KEY
+```
+
+### Example Request
+
+```
+curl -X GET "https://api.hsping.com/api/v1/find?query=laptop" \
+  -H "Authorization: Bearer API_KEY"
+```
+
+### Authentication Errors
+
+If your API key is missing or invalid, you'll receive an <kbd>UNAUTHENTICATED</kbd> response:
+
+```
+{
+"code": "UNAUTHENTICATED",
+"message": "Missing Authoritzation bearer token.",
+}
+```
+
+## Best Practices
+
+- Store your API key in environment variables, not in your code
+- Use different API keys for development and production
+- Rotate your API key periodically for security
+- If your key is compromised, generate a new one immediately from your dashboard
