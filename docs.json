@@ -11,9 +11,9 @@
   "navigation": {
         "group": "Getting Started",
         "pages": [
-          "Introduction",
-          "Authentication",
-          "Supported Countries"
+          "introduction",
+          "authentication",
+          "supported-countries"
         ],
         "group": "API Overview",
         "pages": [
