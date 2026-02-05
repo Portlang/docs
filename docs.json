@@ -35,6 +35,7 @@
       {
         "group": "Parameters",
         "pages": [
+          "parameters/query",
           "parameters/query-type",
           "parameters/country"
         ]
