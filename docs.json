@@ -9,61 +9,53 @@
   },
   "favicon": "/images/favicon.png",
   "navigation": {
-    "groups": [
-      {
         "group": "Getting Started",
         "pages": [
-          "introduction",
-          "introduction/supported-countries",
-          "introduction/authentication"
+          "Introduction",
+          "Authentication",
+          "Supported Countries"
         ]
       },
-      {
+      
         "group": "API Overview",
         "pages": [
           "api-overview/batch-lookup",
           "api-overview/single-hs-code-lookup"
-        ]
-      },
-      {
+        ],
+      
         "group": "Response Format",
         "pages": [
           "response-formats/fields-description",
           "response-formats/success-response"
-        ]
-      },
-      {
+        ],
+      
         "group": "Parameters",
         "pages": [
           "parameters/query-type",
           "parameters/country"
-        ]
-      },
-      {
+        ],
+      
         "group": "Customization",
         "pages": [
           "essentials/settings",
           "essentials/navigation"
-        ]
-      },
-      {
+        ],
+      
         "group": "Writing content",
         "pages": [
           "essentials/markdown",
           "essentials/code",
           "essentials/images",
           "essentials/reusable-snippets"
-        ]
-      },
-      {
+        ],
+      
         "group": "AI tools",
         "pages": [
           "ai-tools/cursor",
           "ai-tools/claude-code",
           "ai-tools/windsurf"
-        ]
-      },
-      {
+        ],
+      
         "group": "API reference",
         "pages": [
           {
@@ -84,13 +76,11 @@
             ]
           }
         ]
-      }
-    ],
+      ,
     "pages": [
           "errors",
           "rate-limits-and-usage"
-    ]
-  },
+    ],
   "logo": {
     "light": "/logo/hsping-logo.png",
     "dark": "/logo/hsping-logo-dark-ori(1).png"
