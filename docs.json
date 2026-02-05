@@ -15,7 +15,7 @@
           "Authentication",
           "Supported Countries"
         ]
-      },
+      ,
       
         "group": "API Overview",
         "pages": [
@@ -48,14 +48,12 @@
           "essentials/images",
           "essentials/reusable-snippets"
         ],
-      
         "group": "AI tools",
         "pages": [
           "ai-tools/cursor",
           "ai-tools/claude-code",
           "ai-tools/windsurf"
         ],
-      
         "group": "API reference",
         "pages": [
           {
@@ -76,7 +74,7 @@
             ]
           }
         ]
-      ,
+      },
     "pages": [
           "errors",
           "rate-limits-and-usage"
