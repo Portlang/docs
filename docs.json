@@ -19,6 +19,27 @@
         ]
       },
       {
+        "group": "API Overview",
+        "pages": [
+          "api-overview/batch-lookup",
+          "api-overview/single-hs-code-lookup"
+        ]
+      },
+      {
+        "group": "Response Format",
+        "pages": [
+          "response-formats/fields-description",
+          "response-formats/success-response"
+        ]
+      },
+      {
+        "group": "Parameters",
+        "pages": [
+          "parameters/query-type",
+          "parameters/country"
+        ]
+      },
+      {
         "group": "Customization",
         "pages": [
           "essentials/settings",
@@ -64,6 +85,10 @@
           }
         ]
       }
+    ],
+    "pages": [
+          "errors",
+          "rate-limits-and-usage"
     ]
   },
   "logo": {
