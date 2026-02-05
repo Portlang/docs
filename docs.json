@@ -28,8 +28,7 @@
       {
         "group": "Response Format",
         "pages": [
-          "response-formats/success-response",
-          "response-formats/fields-description"
+          "response-formats/success-response"
         ]
       },
       {
