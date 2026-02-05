@@ -4,6 +4,20 @@ title: "Query Type"
 
 The <kbd>query_type</kbd> parameter determines how the API searches for HS codes.
 
-<ParamField path="query_type" default="2" type="integer" required>
-  Enter a description
+<ParamField path="query_type" default="2" type="integer">
+  Switch between 2 search modes: HS code only OR full search mode
 </ParamField>
+
+## Search Types
+
+The <kbd>query_type</kbd> parameter lets you switch between the two search modes available. 
+
+### **Type 1** 
+
+Type 1 searches only the HS code numbers themselves. This is useful when you know the HS code or part of it, and it provides faster and more precise results for code lookups. 
+
+### **Type 2** (Default)
+
+Type 2 is the Full Search mode and is set as the default. 
+
+It searches both HS code numbers and descriptions, making it ideal when you're searching by product name or keywords, as it returns broader and more comprehensive results.
