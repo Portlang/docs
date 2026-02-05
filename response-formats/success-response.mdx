@@ -1,4 +1,31 @@
 ---
-title: 'Success Response'
+title: "Success Response"
 ---
 
+When your request is successful, you'll receive a JSON response:
+
+<ResponseExample>
+
+``` filename
+{
+  "query": "chocolate",
+  "query_type": 1,
+  "country": "US",
+  "count": 10,
+  "results": [
+    {
+      "hscode": "1806901000",
+      "wco": "180690",
+      "description_en": "Chocolate, in blocks, slabs or bars",
+      "country": "US",
+      "source": "string",
+      "version": "string",
+      "direction": "string",
+      "last_updated": "11-2025"
+    },
+	{...}
+  ]
+}
+```
+
+</ResponseExample>
