@@ -2,21 +2,15 @@
 title: "Country"
 ---
 
-HS Ping supports the WCO (World Customs Organization) 6 digits standard HS Code, as well as HS variations from these 5 countries: United States, United Kingdom, Canada, Singapore and Australia.
+The country parameter determines which country your search result is based on.
 
-HS Ping currently supports HS code lookups for the following countries:
+If this parameter is not specified, the returning HS Code references would be based on the WCO 6-digits standard.
 
-### 
+<ParamField path="country" type="string">
+  Two-letter ISO country code. Example: "US", "CA"
+</ParamField>
 
-## **The country parameter**
-
-To search for country-specific HS code, use the **country** parameter in your query with country value following the ISO alpha-2 format.
-
-**Request example**
-
-```
-https://api.hsping.com/api/v1/find?query=wooden chair&country=uk
-```
+## Supported Countries
 
 | **Supported Country** | **2-letter ISO Format** | **Full Country Parameter** |
 | :-------------------- | :---------------------- | :------------------------- |
@@ -27,31 +21,3 @@ https://api.hsping.com/api/v1/find?query=wooden chair&country=uk
 | Australia             | AU                      | &country=au                |
 
 Only **import** HS Code is supported for all country-specific responses.
-
-For clarity, all JSON responses returned would also be labelled with the corresponding country code in ISO alpha-2 format.
-
-**Response example**
-
-```
-{
-  "query": "chocolate",
-  ...
-  "results": [
-    {
-      ...
-      "country": "US",
-      ...
-    }
-  ]
-}
-```
-
-**filename**
-
-## **WCO 6-digits standards**
-
-If no country parameter is specified in a request, the returning HS Code references would be based on the WCO 6-digits standard.
-
-1. 
-
-Editor - Mintlify
