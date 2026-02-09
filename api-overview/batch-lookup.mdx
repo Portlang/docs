@@ -1,4 +1,29 @@
 ---
-title: 'Batch Lookup'
+title: "Batch Lookup"
 ---
 
+The Batch Lookup endpoint allows you to search for multiple HS codes using multiple queries in a single API request. 
+
+This is ideal for bulk processing, importing product catalogs, or when you need to classify many products at once.
+
+## HTTP Request
+
+```
+POST https://api.hsping.com/api/v1/find
+```
+
+## URL Parameters
+
+<ParamField path="query" type="string" required>
+  The search term to initiate a HS code search
+</ParamField>
+
+<ParamField path="query_type" default={2} type="integer">
+  Switch between 2 search modes: HS code only OR full search mode
+</ParamField>
+
+<ParamField path="country" type="string">
+  Two-letter ISO country code. Example: “US”, “CA”. 
+
+  Default to WCO 6 digits standard if not specified.
+</ParamField>

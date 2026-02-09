@@ -1,4 +1,29 @@
 ---
-title: 'Single HS Code Lookup'
+title: "Single HS Code Lookup"
 ---
 
+The Single HS Code Lookup endpoint allows you to search for one HS code at a time. 
+
+This is perfect for real-time lookups, interactive search features, or when you are classifying based on a single detailed query.
+
+## HTTP Request
+
+```
+GET https://api.hsping.com/api/v1/find
+```
+
+## URL Parameters
+
+<ParamField path="query" type="string" required>
+  The search term to initiate a HS code search
+</ParamField>
+
+<ParamField path="query_type" default="2" type="integer">
+  Switch between 2 search modes: HS code only OR full search mode
+</ParamField>
+
+<ParamField path="country" type="string">
+  Two-letter ISO country code. Example: “US”, “CA”. 
+
+  Default to WCO 6 digits standard if not specified.
+</ParamField>
