@@ -45,15 +45,6 @@
           "limits-errors/rate-limits-and-usage",
           "limits-errors/errors"
         ]
-      },
-      {
-        "group": "Endpoint examples",
-        "pages": [
-          "api-reference/endpoint/get",
-          "api-reference/endpoint/create-copied-1",
-          "api-reference/endpoint/delete",
-          "api-reference/endpoint/webhook"
-        ]
       }
     ]
   },
