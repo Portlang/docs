@@ -41,7 +41,7 @@ components:
       properties:
         code:
           type: string
-          example: "UNAUTHENTICATED | INVALID_PARAMETER | NOT_FOUND | INSUFFICIENT_CREDITS"
+          example: "UNAUTHENTICATED | INVALID_PARAMETER | RATE_LIMIT_EXCEEDED  | INSUFFICIENT_BALANCE"
         message:
           type: string
           example: "Invalid or inactive API key."
@@ -283,18 +283,49 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                invalidParameter:
+                  summary: Invalid request parameter
+                  value:
+                    code: INVALID_PARAMETER
+                    message: Invalid parameter.
         '401':
           description: Missing or invalid API key
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                unauthenticated:
+                  summary: Invalid API key
+                  value:
+                    code: UNAUTHENTICATED
+                    message: Invalid or inactive API key.
         '402':
           description: Insufficient credits
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                insufficientCredits:
+                  summary: No credits remaining
+                  value:
+                    code: INSUFFICIENT_BALANCE
+                    message: Your account balance is insufficient.
+        '429':
+          description: Rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                rateLimitExceeded:
+                  summary: Rate limit exceeded
+                  value:
+                    code: RATE_LIMIT_EXCEEDED
+                    message: Too many requests. Slow down.
+
 
     post:
       summary: Batch HS code and keyword searches
@@ -354,9 +385,21 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                invalidParameter:
+                  summary: Invalid request parameter
+                  value:
+                    code: INVALID_PARAMETER
+                    message: Invalid parameter.
         '401':
           description: Unauthorized
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/ErrorResponse'
+                $ref: '#/components/schemas/ErrorResponse401'
+              examples:
+                unauthenticated:
+                  summary: Invalid API key
+                  value:
+                    code: UNAUTHENTICATED
+                    message: Invalid or inactive API key.
