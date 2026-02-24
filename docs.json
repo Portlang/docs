@@ -21,8 +21,8 @@
       {
         "group": "API Overview",
         "pages": [
-          "api-overview/untitled-page",
-          "api-overview/single-hs-code-lookup",
+          "api-overview/hs-code-lookup",
+          "api-overview/single-lookup",
           "api-overview/batch-lookup"
         ]
       },
