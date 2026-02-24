@@ -1,0 +1,21 @@
+---
+title: "HS Code Lookup Overview"
+---
+
+HS Code lookup allows you to find corresponding HS code / HTS code based text input.
+
+To keep HS code searches more precise and focused, HS Ping supports various formats of text input and search operators like <kbd>OR</kbd> , <kbd>-</kbd> etc. 
+
+## Language Processing
+
+By default, HS Ping's HS code search is able to handle minor spelling error, plural spelling; while also taking stop words (like "for", "the") into consideration.
+
+## Advanced Search Operators
+
+For advanced lookup and filtering, HS Ping supports the following search operator in the text query.
+
+| Search operator | Description                                                  | Example           |
+| --------------- | ------------------------------------------------------------ | ----------------- |
+| " "             | Search for records that mention a phrase in this exact order | "Plastic toy car" |
+| OR              | Search for records that include **either** X **or** Y        | toy OR model      |
+| -               | Search for records that **exclude** a word or phrase         | toy car -plastic  |
