@@ -2,20 +2,30 @@
 title: "HS Code Lookup Overview"
 ---
 
-HS Code lookup allows you to find corresponding HS code / HTS code based text input.
+HS Ping's HS Code lookup endpoint lets you search for HS / HTS code records using plain-language product descriptions.
 
-To keep HS code searches more precise and focused, HS Ping supports various formats of text input and search operators like <kbd>OR</kbd> , <kbd>-</kbd> etc. 
+You can search by product description, keyword, or existing HS code; and the API returns the most relevant matches for the country you specify. To keep results precise, HS Ping supports flexible text input, natural language processing, and a set of search operators for more targeted queries.
 
-## Language Processing
+## Natural Language Processing
 
-By default, HS Ping's HS code search is able to handle minor spelling error, plural spelling; while also taking stop words (like "for", "the") into consideration.
+HS Ping's lookup engine is designed to handle real-world input without requiring exact matches. By default it:
+
+- **Tolerates minor spelling errors**: "aluminiun foil" will still match aluminum foil
+- **Handles plural and singular forms**: "toys" and "toy" return the same results
+- **Ignores stop words**: common words like "for", "the", and "used in" are filtered out so they don't affect relevance
+
+This processing happens automatically on every query, without additional parameters needed.
 
 ## Advanced Search Operators
 
-For advanced lookup and filtering, HS Ping supports the following search operator in the text query.
+For more precise or filtered lookups, HS Ping supports the following operators in your text query:
 
-| Search operator | Description                                                  | Example           |
-| --------------- | ------------------------------------------------------------ | ----------------- |
-| " "             | Search for records that mention a phrase in this exact order | "Plastic toy car" |
-| OR              | Search for records that include **either** X **or** Y        | toy OR model      |
-| -               | Search for records that **exclude** a word or phrase         | toy car -plastic  |
+| Search operator | Description                                   | Example           |
+| --------------- | --------------------------------------------- | ----------------- |
+| " "             | Record matching an exact phrase in this order | "Plastic toy car" |
+| OR              | Records that include **either** X **or** Y    | toy OR model      |
+| -               | Records that **exclude** a word or phrase     | toy car -plastic  |
+
+Operators can be combined in a single query. 
+
+For example, <kbd>"toy car" OR "model car" -plastic</kbd> will return results matching either phrase ("toy car" or "model car") while excluding any records that mention "plastic".
