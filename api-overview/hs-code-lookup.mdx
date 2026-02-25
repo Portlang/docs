@@ -2,9 +2,9 @@
 title: "HS Code Lookup Overview"
 ---
 
-HS Ping's HS Code lookup endpoint lets you search for HS / HTS code records using plain-language product descriptions.
+The HS Code Lookup API accepts both plain text and numeric input; and returns related HS / HTS codes records. 
 
-You can search by product description, keyword, or existing HS code; and the API returns the most relevant matches for the country you specify. To keep results precise, HS Ping supports flexible text input, natural language processing, and a set of search operators for more targeted queries.
+It is designed to handle how people actually describe and search for products, not just plain keyword matching. Our goal is to make HS Ping the API that powers keyword search, filtering and classification workflow unique to your app.
 
 ## Natural Language Processing
 
@@ -26,6 +26,6 @@ For more precise or filtered lookups, HS Ping supports the following operators i
 | OR              | Records that include **either** X **or** Y    | toy OR model      |
 | -               | Records that **exclude** a word or phrase     | toy car -plastic  |
 
-Operators can be combined in a single query. 
+Operators can be combined in a single query.
 
 For example, <kbd>"toy car" OR "model car" -plastic</kbd> will return results matching either phrase ("toy car" or "model car") while excluding any records that mention "plastic".
