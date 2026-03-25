@@ -8,7 +8,7 @@ This is perfect for real-time lookups, interactive search features, or when you 
 
 ## HTTP Request
 
-```
+```text
 GET https://api.hsping.com/api/v1/find
 ```
 
@@ -18,7 +18,7 @@ GET https://api.hsping.com/api/v1/find
   The search term to initiate a HS code search
 </ParamField>
 
-<ParamField path="query_type" default="2" type="integer">
+<ParamField path="query_type" default={2} type="integer">
   Switch between 2 search modes: HS code only OR full search mode
 </ParamField>
 
@@ -27,3 +27,63 @@ GET https://api.hsping.com/api/v1/find
 
   Default to WCO 6 digits standard if not specified.
 </ParamField>
+
+## Example Response
+
+```json
+{
+  "query": "chocolate",
+  "query_type": 1,
+  "country": "us",
+  "count": 10,
+  "results": [
+    {
+      "hscode": "1806901000",
+      "wco": "180690",
+      "description_en": "Chocolate, in blocks, slabs or bars",
+      "country": "US",
+      "source": "string",
+      "version": "string",
+      "last_updated": "11-2025"
+	  "direction": "string",
+    },
+	{...}
+  ]
+}
+```
+
+## Fields Descriptions
+
+Each HS code object in the response contains the following fields:
+
+<ResponseField name="hscode" type="string">
+  The country-specific HS code for the product, based on the country parameter in the query
+</ResponseField>
+
+<ResponseField name="wco" type="string">
+  The WCO 6 digits HS code for the product
+</ResponseField>
+
+<ResponseField name="description_en" type="integer" default={2}>
+  Country-specific description of the HS code from the tariff schedule
+</ResponseField>
+
+<ResponseField name="country" type="string">
+  Two-letter ISO country code. Example: <kbd>"US"</kbd>, <kbd>"CA"</kbd>
+</ResponseField>
+
+<ResponseField name="source" type="string">
+  The data source of this HS code.
+</ResponseField>
+
+<ResponseField name="version" type="string">
+  The HS nomenclature version based on WCO release schedule. Example: <kbd>"2022"</kbd>, <kbd>"2027"</kbd>
+</ResponseField>
+
+<ResponseField name="direction" type="string">
+  Whether this code applies to imports or exports. Example: <kbd>"import"</kbd>, <kbd>"export"</kbd>
+</ResponseField>
+
+<ResponseField name="last_updated" type="string">
+  The last time we updated this HS code data from the official source.
+</ResponseField>

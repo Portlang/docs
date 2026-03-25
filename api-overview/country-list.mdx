@@ -1,0 +1,52 @@
+---
+title: "Country List"
+---
+
+The Country List endpoint lets you retrieve the full list of countries supported by HS Ping.
+
+This is perfect for real-time lookups, interactive search features, or when you are classifying based on a single detailed query.
+
+## HTTP Request
+
+```text
+GET https://api.hsping.com/api/v1/countrylist
+```
+
+## Example Response
+
+```json
+{
+    "total_countries": 32,
+    "alphabetical": [
+        {
+            "code": "AU",
+            "name": "Australia",
+            "region": "Oceania"
+        },
+        {
+            "code": "AT",
+            "name": "Austria",
+            "region": "Europe"
+        },
+        {...},
+        {...},
+        {...},
+        {...}
+    ],
+    "by_region": {
+        "North America": [
+            {
+                "code": "CA",
+                "name": "Canada"
+            },
+            {
+                "code": "US",
+                "name": "United States"
+            }
+        ],
+        "Europe": [...],
+        "Asia": [...],
+        "Oceania": [...]
+    }
+}
+```

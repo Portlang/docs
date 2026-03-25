@@ -19,17 +19,12 @@
         ]
       },
       {
-        "group": "API Overview",
+        "group": "API Reference",
         "pages": [
           "api-overview/hs-code-lookup",
           "api-overview/single-lookup",
-          "api-overview/batch-lookup"
-        ]
-      },
-      {
-        "group": "Response Format",
-        "pages": [
-          "response-formats/success-response"
+          "api-overview/batch-lookup",
+          "api-overview/country-list"
         ]
       },
       {
