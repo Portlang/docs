@@ -37,16 +37,30 @@ GET https://api.hsping.com/api/v1/find
   "country": "us",
   "count": 10,
   "results": [
-    {
-      "hscode": "1806901000",
-      "wco": "180690",
-      "description_en": "Chocolate, in blocks, slabs or bars",
-      "country": "US",
-      "source": "string",
-      "version": "string",
-      "last_updated": "11-2025"
-	  "direction": "string",
-    },
+        {
+            "hscode": "18069005",
+            "wco": "180690",
+            "description_en": "Chocolate and other food preparations containing cocoa: > Other: > Other:",
+            "hierarchy": {
+                "section": {
+                    "section": "IV",
+                    "section_title": "Prepared foodstuffs; beverages, spirits and vinegar; tobacco and manufactured tobacco substitutes"
+                },
+                "chapter": {
+                    "chapter_code": "18",
+                    "chapter_description_en": "COCOA AND COCOA PREPARATIONS"
+                },
+                "heading": {
+                    "heading_code": "1806",
+                    "heading_description_en": "Chocolate and other food preparations containing cocoa:"
+                }
+            },
+            "direction": "import",
+            "country": "US",
+            "source": "USITC United States International Trade Commission",
+            "version": "2025",
+            "last_updated": "05-2026"
+        },
 	{...}
   ]
 }
