@@ -78,8 +78,12 @@ Each HS code object in the response contains the following fields:
   The WCO 6 digits HS code for the product
 </ResponseField>
 
-<ResponseField name="description_en" type="integer" default={2}>
+<ResponseField name="description_en" type="string">
   Country-specific description of the HS code from the tariff schedule
+</ResponseField>
+
+<ResponseField name="hierarchy" type="object" default={2}>
+  The classification hierarchy this code belongs to
 </ResponseField>
 
 <ResponseField name="country" type="string">
